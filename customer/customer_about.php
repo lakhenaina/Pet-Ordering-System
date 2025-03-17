@@ -9,18 +9,18 @@
     <style>
         /* Global styles */
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Roboto Condensed", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
-            color: #333; /* Text color */
+            background-color: #ffffff;
+            color: #333; /* Text color white */
         }
 
         .container {
             max-width: 900px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
@@ -31,7 +31,7 @@
         }
 
         header h1 {
-            color: #4CAF50; /* Greenish color for headings */
+            color: #4CAF50; /* green color for headings */
         }
 
         section {
@@ -59,24 +59,6 @@
 
         .value h3 {
             color: #4CAF50;
-            margin-bottom: 10px;
-        }
-
-        .team-members {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .team-member {
-            text-align: center;
-            max-width: 200px;
-        }
-
-        .team-member img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
             margin-bottom: 10px;
         }
 

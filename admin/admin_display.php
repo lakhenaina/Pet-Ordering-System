@@ -16,7 +16,8 @@ if($_SESSION['is_login'] != 1){
     // Fetch data from the database for the specific dog using the ID
     $sql = "SELECT dogs.*, breed.breed_name, size ,color
         FROM dogs 
-        LEFT JOIN breed ON dogs.breed_id = breed.id ";
+        LEFT JOIN breed ON dogs.breed_id = breed.id 
+        ORDER BY breed.breed_name ASC";
         
     $result = mysqli_query($conn, $sql);
 
@@ -69,22 +70,27 @@ if($_SESSION['is_login'] != 1){
             </tr>
         </thead>
         <tbody>
-            <?php while ($row = mysqli_fetch_assoc($result)) {?>
-                <tr>
-                    <td><?= $row['id'] ?></td>
-                    <td><?= $row['breed_name'] ?></td>
-                    <td><?= $row['gender'] ?></td>
-                    <td><?= $row['age'] ?></td>
-                    <td><?= $row['quantity'] ?></td>
-                    <td><?= $row['size'] ?></td>
-                    <td><?= $row['color'] ?></td>
-                    <td><img src="uploads/<?= $row['image'] ?>" width="50" alt="" class="src"></td>
-                    <td><?= $row['price'] ?></td>
-                    <td><a href="update.php?id=<?= $row['id'] ?>"><button class="update-btn">Update</button></a></td>
-                    <td><a href="admin_delete.php?id=<?= $row['id'] ?>"><button class="delete-btn">Delete</button></a></td>
-                </tr>
-            <?php } ?>
-        </tbody>
+    <?php 
+    $serial = 1; // Initialize serial number
+    while ($row = mysqli_fetch_assoc($result)) { ?>
+        <tr>
+            <td><?= $serial ?></td> <!-- Use serial number instead of database ID -->
+            <td><?= $row['breed_name'] ?></td>
+            <td><?= $row['gender'] ?></td>
+            <td><?= $row['age'] ?></td>
+            <td><?= $row['quantity'] ?></td>
+            <td><?= $row['size'] ?></td>
+            <td><?= $row['color'] ?></td>
+            <td><img src="uploads/<?= $row['image'] ?>" width="50" alt="" class="src"></td>
+            <td><?= $row['price'] ?></td>
+            <td><a href="update.php?id=<?= $row['id'] ?>"><button class="update-btn">Update</button></a></td>
+            <td><a href="admin_delete.php?id=<?= $row['id'] ?>"><button class="delete-btn">Delete</button></a></td>
+        </tr>
+    <?php 
+        $serial++; // Increment serial number
+    } ?>
+</tbody>
+
     </table>
 </div>
 
